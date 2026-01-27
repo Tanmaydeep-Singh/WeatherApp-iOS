@@ -5,30 +5,30 @@
 //  Created by tanmaydeep on 27/01/26.
 //
 
-import SwiftUI
+import Foundation
 
-protocol NetworkProvider {
-    func request<T: Decodable>(endpoint: APIEndpoint) async throws -> T
-}
+final class NetworkManager {
+    static let shared = NetworkManager() 
+    private init() {}
 
-final class NetworkManager: NetworkProvider {
     func request<T: Decodable>(endpoint: APIEndpoint) async throws -> T {
-        var request = URLRequest(url: endpoint.baseURL.appendingPathComponent(endpoint.path))
+
+        var components = URLComponents(url: endpoint.baseURL.appendingPathComponent(endpoint.path), resolvingAgainstBaseURL: true)
+        components?.queryItems = endpoint.queryItems
+        
+        guard let url = components?.url else { throw NetworkError.invalidURL }
+        
+        var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.headers
         request.httpBody = endpoint.body
-
-        let (data, response) = try await  URLSession.shared.data(for: request)
-
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200...299).contains(httpResponse.statusCode) else {
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
             throw NetworkError.invalidResponse
         }
-
-        do {
-            return try JSONDecoder().decode(T.self, from: data)
-        } catch {
-            throw NetworkError.decodingError
-        }
+        
+        return try JSONDecoder().decode(T.self, from: data)
     }
 }
