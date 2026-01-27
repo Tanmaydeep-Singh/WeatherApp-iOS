@@ -1,0 +1,46 @@
+import SwiftUI
+enum Weather {
+    case sunny
+    case foggy
+    case snow
+    case rainy
+    case windy
+    
+    var icon: String {
+        switch self {
+        case .sunny:
+            return "sun.max.fill"
+        case .foggy:
+            return "cloud.fog.fill"
+        case .snow:
+            return "snowflake"
+        case .rainy:
+            return "cloud.rain.fill"
+        case .windy:
+            return "wind"
+        }
+    }
+}
+
+struct Temperature{
+    let min: Int
+    let max: Int
+    
+    var temperatureText: String {
+        "\(min)°C / \(max)°C"
+    }
+}
+
+struct Location: Identifiable, Hashable{
+    let id = UUID()
+    var name: String
+    var weather: Weather
+    var temperature: Temperature
+    func hash(into hasher: inout Hasher) {
+            hasher.combine(id)  // Hash only what you need
+            hasher.combine(name)
+        }
+    static func == (lhs: Location, rhs: Location) -> Bool {
+            lhs.id == rhs.id  // Or include other fields: && lhs.name == rhs.name
+        }
+}
