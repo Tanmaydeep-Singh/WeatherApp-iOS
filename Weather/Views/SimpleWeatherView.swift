@@ -62,6 +62,7 @@ struct SimpleWeatherView: View {
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
+            
             let decodedResponse = try JSONDecoder().decode(SimpleWeatherResponse.self, from: data)
             self.weatherData = decodedResponse
         } catch {

@@ -22,7 +22,7 @@ enum WeatherEndpoint: APIEndpoint {
             return [
                 URLQueryItem(name: "lat", value: "\(lat)"),
                 URLQueryItem(name: "lon", value: "\(lon)"),
-                URLQueryItem(name: "appid", value: ""), // Key from our secure config
+                URLQueryItem(name: "appid", value: "9533d6f76555ba44c994f2504314cdd3"), // Key from our secure config
                 URLQueryItem(name: "units", value: "metric")
             ]
         }

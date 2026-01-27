@@ -7,7 +7,13 @@ struct Location: Identifiable, Hashable {
     let lon: Double
     var weather: WeatherType
     var temperature: TemperatureRange
-    var currentTemp: Double? 
+    var currentTemp: Double?
+    var description: String = ""
+    var humidity: Int?
+    var feelsLike: Double?
+    var pressure: Int?
+    var visibility: Int?
+    var iconURL: String?
 }
 
 enum WeatherType: String {
