@@ -1,6 +1,9 @@
-# WeatherApp-iOS
-# WeatherApp-iOS
-<<<<<<< HEAD
-=======
-# WeatherApp-iOS
->>>>>>> 57934440be6dd041e8722fc6b256a0cf02c20fd6
+# Weather App
+
+![Home](Screenshots/Home.png) 
+![Home](Screenshots/List.png) 
+![Home](Screenshots/Settings.png) 
+![Home](Screenshots/Settings2.png) 
+![Home](Screenshots/Details.png) 
+
+
