@@ -6,8 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		144EE5E52F29EA080030FBCA /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144EE5E42F29EA050030FBCA /* Untitled.swift */; };
+		144EE5ED2F29EAA00030FBCA /* CachedWeather+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144EE5EC2F29EAA00030FBCA /* CachedWeather+CoreDataProperties.swift */; };
+		144EE5EE2F29EAA00030FBCA /* CachedWeather+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144EE5EB2F29EAA00030FBCA /* CachedWeather+CoreDataClass.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		144EE4522F239E480030FBCA /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		144EE4522F239E480030FBCA /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Weather.app; path = "/Users/tanmaydeep/Documents/iOS Dev Learning/WeatherApp/Weather/build/Debug-iphoneos/Weather.app"; sourceTree = "<absolute>"; };
+		144EE5E42F29EA050030FBCA /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
+		144EE5EB2F29EAA00030FBCA /* CachedWeather+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedWeather+CoreDataClass.swift"; sourceTree = "<group>"; };
+		144EE5EC2F29EAA00030FBCA /* CachedWeather+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedWeather+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,17 +41,11 @@
 		144EE4492F239E480030FBCA = {
 			isa = PBXGroup;
 			children = (
+				144EE5EB2F29EAA00030FBCA /* CachedWeather+CoreDataClass.swift */,
+				144EE5EC2F29EAA00030FBCA /* CachedWeather+CoreDataProperties.swift */,
 				144EE4542F239E480030FBCA /* Weather */,
-				144EE4532F239E480030FBCA /* Products */,
+				144EE5E42F29EA050030FBCA /* Untitled.swift */,
 			);
-			sourceTree = "<group>";
-		};
-		144EE4532F239E480030FBCA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				144EE4522F239E480030FBCA /* Weather.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,7 +98,7 @@
 			mainGroup = 144EE4492F239E480030FBCA;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 144EE4532F239E480030FBCA /* Products */;
+			productRefGroup = 144EE4492F239E480030FBCA;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -119,6 +122,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144EE5E52F29EA080030FBCA /* Untitled.swift in Sources */,
+				144EE5ED2F29EAA00030FBCA /* CachedWeather+CoreDataProperties.swift in Sources */,
+				144EE5EE2F29EAA00030FBCA /* CachedWeather+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

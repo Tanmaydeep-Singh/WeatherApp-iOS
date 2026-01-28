@@ -60,6 +60,15 @@ struct DetailsView: View {
             }
         }
         .task { await fetchLiveWeather() }
+        .onAppear {
+            if let cached = OfflineWeatherService.fetch(
+                lat: location.lat,
+                lon: location.lon
+            ) {
+                location.applyCache(cached)
+            }
+        }
+
         
     }
 
@@ -79,6 +88,11 @@ struct DetailsView: View {
                 self.location.iconURL = "https://openweathermap.org/img/wn/\(result.iconId)@4x.png"
                 self.isLoading = false
             }
+            WeatherCacheService.save(
+                location: location,
+                response: result
+            )
+
         } catch {
             print("Error: \(error)")
             isLoading = false
