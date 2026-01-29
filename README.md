@@ -32,8 +32,11 @@ To ensure the app remains functional without an internet connection, we integrat
 ## Screenshots
 
 ![Home](Screenshots/Home.png) 
+![Home](Screenshots/Landing.png) 
 ![Home](Screenshots/List.png) 
 ![Home](Screenshots/Settings.png) 
+![Home](Screenshots/Details.png) 
+
 
 Would you like me to write the Swift code for the **Router** enum and the **NavigationStack** implementation?
 

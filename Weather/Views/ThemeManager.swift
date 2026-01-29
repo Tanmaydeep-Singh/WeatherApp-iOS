@@ -10,7 +10,7 @@ import Combine
 
 @MainActor
 final class ThemeManager: ObservableObject {
-    @AppStorage("isDarkMode") var isDarkMode: Bool = true {
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false {
         willSet {
             objectWillChange.send()
         }

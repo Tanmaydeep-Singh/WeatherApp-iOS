@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct WeatherApp: App {
+    
+    @StateObject private var themeManager = ThemeManager()
+
     init() {
            #if DEBUG
            Thread.sleep(forTimeInterval: 1.5)
@@ -18,6 +21,8 @@ struct WeatherApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(themeManager)
+                .preferredColorScheme( themeManager.isDarkMode ? .dark : .light )
         }
     }
 }

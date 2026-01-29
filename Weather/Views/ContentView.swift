@@ -20,7 +20,6 @@ struct ContentView: View {
                                        }
               
                 }
-                .preferredColorScheme( themeManager.isDarkMode ? .dark : .light )
         }
     }
 }
