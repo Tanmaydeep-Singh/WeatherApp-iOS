@@ -4,14 +4,13 @@ struct HomeView: View {
     @Binding var path: NavigationPath
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 24) {
-                Spacer()
-
+        VStack {
+            // 🔹 Center content
+            VStack(spacing: 16) {
                 Image("umbrella")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 120, height: 120)
 
                 Text("Breeze")
                     .font(.largeTitle)
@@ -19,26 +18,23 @@ struct HomeView: View {
                     .foregroundStyle(.white)
 
                 Text("Weather App")
+                    .font(.subheadline)
                     .foregroundStyle(.gray)
-
-                Spacer()
-
-                Button {
-                    path.append(Route.list)
-                } label: {
-                    Image(systemName: "arrow.right.circle.fill")
-                        .font(.system(size: 56))
-                        .foregroundStyle(.white)
-                        .background(
-                            Circle()
-                                .fill(.blue)
-                                .frame(width: 64, height: 64)
-                        )
-                }
-
-                Spacer()
             }
+            .frame(maxHeight: .infinity)
+
+            Button {
+                path.append(Route.list)
+            } label: {
+                Image(systemName: "arrow.right")
+                    .font(.system(size: 28, weight: .bold))
+                    .foregroundStyle(.white)
+                    .frame(width: 64, height: 64)
+                    .background(Circle().fill(.blue))
+            }
+            .padding(.bottom, 32)
         }
+        .padding()
     }
 }
 

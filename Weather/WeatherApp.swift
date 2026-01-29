@@ -9,6 +9,12 @@ import SwiftUI
 
 @main
 struct WeatherApp: App {
+    init() {
+           #if DEBUG
+           Thread.sleep(forTimeInterval: 1.5)
+           #endif
+       }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
