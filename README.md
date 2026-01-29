@@ -38,7 +38,4 @@ To ensure the app remains functional without an internet connection, we integrat
 ![Home](Screenshots/Details.png) 
 
 
-Would you like me to write the Swift code for the **Router** enum and the **NavigationStack** implementation?
-
-
 
