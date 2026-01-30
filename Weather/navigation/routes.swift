@@ -9,4 +9,5 @@ enum Route: Hashable {
     case list
     case details(location: Location)
     case settings
+    case addLocation
 }

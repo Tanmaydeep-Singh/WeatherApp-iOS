@@ -30,14 +30,23 @@ struct ListView: View {
         .navigationTitle("Locations")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    path.append(Route.settings)
-                } label: {
-                    Image(systemName: "gear")
+                HStack(spacing: 20) {
+                    Button {
+                        path.append(Route.addLocation)
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    
+                    Button {
+                        path.append(Route.settings)
+                    } label: {
+                        Image(systemName: "gear")
+                    }
                 }
             }
+        }.onAppear {
+            viewModel.loadLocations()
         }
     }
 }

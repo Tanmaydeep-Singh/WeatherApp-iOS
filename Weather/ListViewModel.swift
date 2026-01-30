@@ -1,18 +1,47 @@
+//
+//  ListViewModel.swift
+//  Weather
+//
+//  Created by tanmaydeep on 30/01/26.
+//
 import Foundation
 import Combine
+import CoreData
 
 class ListViewModel: ObservableObject {
     @Published var searchText: String = ""
-    
-    @Published var locations: [Location] = [
-        Location(name: "Mumbai", lat: 19.0760, lon: 72.8777, weather: .sunny, temperature: .init(min: 22, max: 32) , description: "empty"),
-        Location(name: "New Delhi", lat: 28.6139, lon: 77.2090, weather: .foggy, temperature: .init(min: 11, max: 24), description: ""),
-        Location(name: "Chennai", lat: 13.0827, lon: 80.2707, weather: .sunny, temperature: .init(min: 24, max: 36) , description: ""),
-        Location(name: "Bengaluru", lat: 12.9716, lon: 77.5946, weather: .rainy, temperature: .init(min: 24, max: 30), description: ""),
-        Location(name: "Hyderabad", lat: 17.3850, lon: 78.4867, weather: .windy, temperature: .init(min: 22, max: 32), description: "")
-    ]
+    @Published var locations: [Location] = []
+
+    func loadLocations() {
+        let context = CoreDataManager.shared.context
+        let fetchRequest: NSFetchRequest<CachedWeather> = CachedWeather.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "city", ascending: true)]
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            self.locations = results.compactMap { Location(from: $0) }
+        } catch {
+            print("Fetch failed: \(error.localizedDescription)")
+        }
+    }
 
     var filteredLocations: [Location] {
         searchText.isEmpty ? locations : locations.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+    }
+    
+    func addLocation(_ location: Location) {
+        let context = CoreDataManager.shared.context
+        
+        let fetchRequest: NSFetchRequest<CachedWeather> = CachedWeather.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "city == %@", location.name)
+        
+        let existingEntity = try? context.fetch(fetchRequest).first
+        let entity = existingEntity ?? CachedWeather(context: context)
+        
+        entity.update(from: location)
+        
+        CoreDataManager.shared.save()
+        
+        loadLocations()
     }
 }

@@ -17,6 +17,8 @@ struct ContentView: View {
                         DetailsView(path: $path, location: location)
                     case .settings:
                         SettingsView()
+                    case .addLocation:
+                        AddCity()
                                        }
               
                 }
